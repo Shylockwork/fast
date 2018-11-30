@@ -60,7 +60,9 @@ public class MybatisFirst {
 
 	}
 
-	// 根据用户名称模糊查询用户列表
+	/*
+	* 根据用户名称模糊查询用户列表
+	* */
 	@Test
 	public void findUserByNameTest() throws IOException {
 		// mybatis配置文件
