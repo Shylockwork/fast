@@ -64,7 +64,9 @@
         上边规范的前提是：使用的是mapper代理方法
          -->
         <!--<package name="mybatis.mapper"/>-->
-        <mapper resource="config/mybatis/mapper/UserMapper.xml"/>
+
+        <!--和spring整合后使用的是mapper扫描器 这里不需要配置-->
+        <!--<mapper resource="config/mybatis/mapper/UserMapper.xml"/>-->
     </mappers>
 
 </configuration>

@@ -3,6 +3,7 @@ package mybatis.dao;
 import java.util.Date;
 import java.util.List;
 
+import mybatis.po.UserPage;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -37,7 +38,6 @@ public class UserDaoImpl extends SqlSessionDaoSupport implements UserDao {
 	@Override
 	public User findUserById(int id) throws Exception {
 		//SqlSession sqlSession = sqlSessionFactory.openSession();
-
 		//ssm dao 获取sqlSession方式
 		SqlSession sqlSession = this.getSqlSession();
 		User user = sqlSession.selectOne("test.findUserById", id);
@@ -47,46 +47,43 @@ public class UserDaoImpl extends SqlSessionDaoSupport implements UserDao {
 	@Override
 	public List<User> findUserByName(String name) throws Exception {
 		//SqlSession sqlSession = sqlSessionFactory.openSession();
-
 		SqlSession sqlSession = this.getSqlSession();
 		List<User> list = sqlSession.selectList("test.findUserByName", name);
-
 		// 释放资源
 		//sqlSession.close();
-
 		return list;
 	}
-	
-
 	@Override
 	public void insertUser(User user) throws Exception {
 		//SqlSession sqlSession = sqlSessionFactory.openSession();
 		SqlSession sqlSession = this.getSqlSession();
 		//执行插入操作
 		sqlSession.insert("test.insertUser", user);
-
 		// 提交事务
 		sqlSession.commit();
 
 		// 释放资源
 		//sqlSession.close();
-
 	}
-
 	@Override
 	public void deleteUser(int id) throws Exception {
 		//SqlSession sqlSession = sqlSessionFactory.openSession();
 		SqlSession sqlSession = this.getSqlSession();
 		//执行插入操作
 		sqlSession.delete("test.deleteUser", id);
-
 		// 提交事务
 		sqlSession.commit();
-
 		// 释放资源
 		//sqlSession.close();
-
 	}
+
+	@Override
+	public List<User> queryUserByPage(UserPage userPage){
+		SqlSession sqlSession = this.getSqlSession();
+		List<User> list = sqlSession.selectList("test.queryUserByPage",userPage);
+		return list;
+	}
+
 
 
 

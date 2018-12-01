@@ -3,6 +3,7 @@ package mybatis.dao;
 import java.util.List;
 
 import mybatis.po.User;
+import mybatis.po.UserPage;
 
 /**
  * 
@@ -26,7 +27,7 @@ public interface UserDao {
 	
 	//删除用户信息
 	public void deleteUser(int id) throws Exception;
-	
-	
 
+	//实现分页查询
+	public List<User> queryUserByPage(UserPage userPage)throws Exception;
 }

@@ -43,6 +43,30 @@
         <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
 
+    <!--mapper的配置  不建议使用,会造成配置文件冗余累赘-->
+
+    <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <!--mapperInterface指定mapper接口-->
+        <property name="mapperInterface" value="mybatis.mapper.UserMapper"/>
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>
+
+
+
+    <!--建议使用MapperScannerConfiurer进行包扫描-->
+    <!-- mapper批量扫描，从mapper包中扫描出mapper接口，自动创建代理对象并且在spring容器中注册
+	遵循规范：将mapper.java和mapper.xml映射文件名称保持一致，且在一个目录 中
+	自动扫描出来的mapper的bean的id为mapper类名（首字母小写）
+	-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 指定扫描的包名
+		如果扫描多个包 ,不能用*通配符，每个包中间使用半角逗号分隔
+-->
+        <property name="basePackage" value="mybatis.mapper"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+
+
 
 
 </beans>

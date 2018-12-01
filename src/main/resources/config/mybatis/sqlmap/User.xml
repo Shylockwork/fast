@@ -85,4 +85,10 @@
         update user set username=#{username},birthday=#{birthday},sex=#{sex},address=#{address} where id=#{id}
     </update>
 
+    <!--使用分页查询用户-->
+    <select id="queryUserByPage" resultType="mybatis.po.User">
+        select * from user limit #{startPage},#{pageSize}
+    </select>
+
+
 </mapper>

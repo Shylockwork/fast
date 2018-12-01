@@ -57,7 +57,7 @@
             <version>1.0.2</version>
         </dependency>
 
-        <!-- dbutils依赖-->
+        <!-- db utils依赖-->
         <dependency>
             <groupId>commons-dbutils</groupId>
             <artifactId>commons-dbutils</artifactId>
@@ -165,9 +165,17 @@
         </plugins>
 
 
-
-
+<!--idea默认不能扫描代码包中的file文件-->
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
     </build>
-
-
 </project>

@@ -38,8 +38,8 @@ public interface UserMapper {
 
 	//删除用户
 	public void deleteUser(int id)throws Exception;
-	
-	
-	
+
+	//分页查询用户
+	public void queryUserByPage(int startNum,int pageSize)throws Exception;
 
 }
