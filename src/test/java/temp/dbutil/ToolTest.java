@@ -1,12 +1,12 @@
 package temp.dbutil;
-
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.junit.Test;
+import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-
-
+import java.util.List;
 
 public class ToolTest {
 
@@ -41,6 +41,23 @@ public class ToolTest {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void testFindAll() throws SQLException {
+
+        Connection conn = MyTest.getConn();
+        String sql = "select * from account";
+        QueryRunner qr = new QueryRunner();
+
+        List<Account> list= qr.query(conn,sql,new BeanListHandler<>(Account.class));
+
+        for(Account account:list){
+            System.out.println(account.getName());
+        }
+
+
+
     }
 
 
