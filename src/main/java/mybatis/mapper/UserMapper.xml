@@ -181,4 +181,17 @@ resultMap：指定定义的resultMap的id，如果这个resultMap在其它的map
 		select * from user limit #{startPage},#{pageSize}
 	</select>
 
+
+	<!--测试bug-->
+	<select id="findUserList2" resultType="mybatis.po.UserCustom">
+		SELECT * FROM USER where username='王五'
+	</select>
+
+
+    <!--***************************关联分析**********************************-->
+
+
+
+
+
 </mapper>

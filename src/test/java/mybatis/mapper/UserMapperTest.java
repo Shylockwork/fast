@@ -1,4 +1,5 @@
 package mybatis.mapper;
+import mybatis.po.OrdersCustom;
 import mybatis.po.UserCustom;
 import mybatis.po.UserQueryVo;
 import org.junit.Before;
@@ -42,6 +43,26 @@ public class UserMapperTest {
         userQueryVo.setIds(ids);
         //查询
         List<UserCustom> list = userMapper.findUserList(userQueryVo);
+        System.out.println(list);
+    }
+
+
+
+
+
+    @Test
+    public void testQueryUserByPage() throws Exception {
+        OrdersMapper ordersMapper = (OrdersMapper)applicationContext.getBean("ordersMapper");
+        List<OrdersCustom> list = ordersMapper.findOrdersUser();
+
+        System.out.println(list);
+    }
+
+
+    @Test
+    public void testFindUserListBug() throws Exception {
+        UserMapper userMapper = (UserMapper) applicationContext.getBean("userMapper");
+        List<UserCustom> list = userMapper.findUserList2();
         System.out.println(list);
     }
 }

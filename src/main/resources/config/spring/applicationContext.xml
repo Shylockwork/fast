@@ -45,11 +45,11 @@
 
     <!--mapper的配置  不建议使用,会造成配置文件冗余累赘-->
 
-    <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <!--mapperInterface指定mapper接口-->
-        <property name="mapperInterface" value="mybatis.mapper.UserMapper"/>
-        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
-    </bean>
+    <!--<bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">-->
+        <!--&lt;!&ndash;mapperInterface指定mapper接口&ndash;&gt;-->
+        <!--<property name="mapperInterface" value="mybatis.mapper.UserMapper"/>-->
+        <!--<property name="sqlSessionFactory" ref="sqlSessionFactory"/>-->
+    <!--</bean>-->
 
 
 

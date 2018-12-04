@@ -42,4 +42,11 @@ public interface UserMapper {
 	//分页查询用户
 	public void queryUserByPage(int startNum,int pageSize)throws Exception;
 
+
+	//测试bug
+	public List<UserCustom> findUserList2()throws Exception;
+
+
+
+
 }

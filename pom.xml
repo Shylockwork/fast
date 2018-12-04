@@ -164,7 +164,6 @@
             </plugin>
         </plugins>
 
-
 <!--idea默认不能扫描代码包中的file文件-->
         <resources>
             <resource>
