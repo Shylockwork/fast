@@ -1,8 +1,5 @@
 <component name="libraryTable">
   <library name="Maven: c3p0:c3p0:0.9.1.2">
-    <ANNOTATIONS>
-      <root url="file://C:/shylock/TestCheckOut" />
-    </ANNOTATIONS>
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/c3p0/c3p0/0.9.1.2/c3p0-0.9.1.2.jar!/" />
     </CLASSES>

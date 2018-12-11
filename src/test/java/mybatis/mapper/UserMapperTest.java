@@ -1,5 +1,6 @@
 package mybatis.mapper;
-import mybatis.po.OrdersCustom;
+
+import mybatis.po.User;
 import mybatis.po.UserCustom;
 import mybatis.po.UserQueryVo;
 import org.junit.Before;
@@ -52,10 +53,9 @@ public class UserMapperTest {
 
     @Test
     public void testQueryUserByPage() throws Exception {
-        OrdersMapper ordersMapper = (OrdersMapper)applicationContext.getBean("ordersMapper");
-        List<OrdersCustom> list = ordersMapper.findOrdersUser();
-
-        System.out.println(list);
+//        OrdersMapper ordersMapper = (OrdersMapper)applicationContext.getBean("ordersMapper");
+//        List<OrdersCustom> list = ordersMapper.findOrdersUser();
+//        System.out.println(list);
     }
 
 
@@ -64,5 +64,31 @@ public class UserMapperTest {
         UserMapper userMapper = (UserMapper) applicationContext.getBean("userMapper");
         List<UserCustom> list = userMapper.findUserList2();
         System.out.println(list);
+    }
+
+    @Test
+    public void testCache() throws Exception {
+        // 创建代理对象
+        UserMapper userMapper1 = applicationContext.getBean(UserMapper.class);
+        // 第一次发起请求，查询id为1的用户
+        User user1 = userMapper1.findUserById(1);
+        System.out.println(user1);
+
+        //这里执行关闭操作，将sqlsession中的数据写到二级缓存区域
+       // sqlSession1.close();
+
+
+		//使用sqlSession3执行commit()操作
+//		UserMapper userMapper3 = applicationContext.getBean(UserMapper.class);
+//		User user  = userMapper3.findUserById(1);
+//		user.setUsername("张明明");
+//		userMapper3.insertUser(user);
+		//执行提交，清空UserMapper下边的二级缓存
+
+
+        UserMapper userMapper2 = applicationContext.getBean(UserMapper.class);
+        // 第二次发起请求，查询id为1的用户
+        User user2 = userMapper2.findUserById(1);
+        System.out.println(user2);
     }
 }

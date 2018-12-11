@@ -6,6 +6,11 @@
         <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/client/pom.xml" />
+      </set>
+    </option>
   </component>
   <component name="ProjectResources">
     <resource url="http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" location="$USER_HOME$/.IntelliJIdea2018.1/system/extResources/cf63db72_mybatis-generator-config_1_0.dtd" />

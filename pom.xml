@@ -6,18 +6,36 @@
 
     <groupId>groupId</groupId>
     <artifactId>Shylock</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
         <commons-lang.version>2.6</commons-lang.version>
         <slf4j.version>1.7.6</slf4j.version>
         <spring.version>4.1.3.RELEASE</spring.version>
-        <jackson.version>2.5.4</jackson.version>
         <mybatis.version>3.2.7</mybatis.version>
+        <jedis.version>2.9.0</jedis.version>
+        <cglib.version>3.2.5</cglib.version>
+        <spring-jdbc.version>4.1.3.RELEASE</spring-jdbc.version>
+        <dbcp2.version>2.1.1</dbcp2.version>
+        <ehcahe.version>3.6.1</ehcahe.version>
+        <mybatis-ehcache.version>1.0.2</mybatis-ehcache.version>
+        <commons-dbutils.version>1.7</commons-dbutils.version>
+        <jackson.version>2.5.4</jackson.version>
+        <mysql-connector-java.version>5.1.25</mysql-connector-java.version>
+        <jstl.version>1.2</jstl.version>
+        <c3p0.version>0.9.1.2</c3p0.version>
+        <mybatis-spring.version>1.3.0</mybatis-spring.version>
+        <junit.version>4.11</junit.version>
+        <servlet-api.version>2.5</servlet-api.version>
+        <commons-fileupload.version>1.3.1</commons-fileupload.version>
+
+        <javax.inject.version>1</javax.inject.version>
+        <aspectjweaver.version>1.8.7</aspectjweaver.version>
+
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -31,37 +49,144 @@
     </dependencyManagement>
 
     <dependencies>
+        <!--进行jaxws服务开发-->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+        <!--内置jetty web服务器-->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.cxf</groupId>-->
+            <!--<artifactId>cxf-rt-transports-http-jetty</artifactId>-->
+            <!--<version>3.0.1</version>-->
+            <!--<exclusions>-->
+                <!--<exclusion>-->
+                    <!--<artifactId>slf4j-api</artifactId>-->
+                    <!--<groupId>org.slf4j</groupId>-->
+                <!--</exclusion>-->
+            <!--</exclusions>-->
+        <!--</dependency>-->
+
+        <!--进行jaxrs服务开发restful风格-->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxrs</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+        <!--内置jetty web服务器-->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http-jetty</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+        <!-- 客户端调用时候使用的包(WebClient工具类调用服务端)-->
+        <!-- 转换json工具包，被extension providers 依赖 -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-rs-client</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+        <!-- 扩展json提供者 -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-rs-extension-providers</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+        <!-- 基于restful风格的webservice，客户端与服务端之间可以传递json，这个就是json支持相关包 -->
+        <dependency>
+            <groupId>org.codehaus.jettison</groupId>
+            <artifactId>jettison</artifactId>
+            <version>1.3.7</version>
+        </dependency>
+
+<!-- ******************************************************************************** -->
+
+
+
+
+        <!--整合需要commons-lang包支持-->
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${commons-lang.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>${servlet-api.version}</version>
+        </dependency>
+
+        <!--springmvc 需要fileupload支持-->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>${commons-fileupload.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <!--jedis-->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>${jedis.version}</version>
+        </dependency>
+
+        <!--cglib动态代理包-->
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>${cglib.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
-            <version>4.1.3.RELEASE</version>
+            <version>${spring-jdbc.version}</version>
         </dependency>
-
         <!--使用dbcp-->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-dbcp2</artifactId>
-            <version>2.1.1</version>
+            <version>${dbcp2.version}</version>
         </dependency>
 
         <!-- ehcache 相关依赖 -->
         <dependency>
             <groupId>org.ehcache</groupId>
             <artifactId>ehcache</artifactId>
-            <version>3.6.1</version>
+            <version>${ehcahe.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
+
         <dependency>
             <groupId>org.mybatis.caches</groupId>
             <artifactId>mybatis-ehcache</artifactId>
-            <version>1.0.2</version>
+            <version>${mybatis-ehcache.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- db utils依赖-->
         <dependency>
             <groupId>commons-dbutils</groupId>
             <artifactId>commons-dbutils</artifactId>
-            <version>1.7</version>
+            <version>${commons-dbutils.version}</version>
         </dependency>
 
         <dependency>
@@ -82,14 +207,13 @@
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
-            <version>1.3.0</version>
+            <version>${mybatis-spring.version}</version>
         </dependency>
-
 
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -98,27 +222,27 @@
         <dependency>
             <groupId>javax.inject</groupId>
             <artifactId>javax.inject</artifactId>
-            <version>1</version>
+            <version>${javax.inject.version}</version>
         </dependency>
 
         <dependency>
             <groupId> org.aspectj</groupId >
-            <artifactId> aspectjweaver</artifactId >
-            <version> 1.8.7</version >
+            <artifactId>aspectjweaver</artifactId >
+            <version>${aspectjweaver.version}</version >
         </dependency>
 
 
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.25</version>
+            <version>${mysql-connector-java.version}</version>
         </dependency>
 
 
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
-            <version>1.2</version>
+            <version>${jstl.version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -128,25 +252,30 @@
         </dependency>
 
 
+        <!--日志-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
             <version>${slf4j.version}</version>
             <exclusions>
                 <exclusion>
-                    <groupId>slf4j-api</groupId>
-                    <artifactId>org.slf4j</artifactId>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
                 </exclusion>
             </exclusions>
         </dependency>
 
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
         <!--c3p0 连接池 -->
         <dependency>
             <groupId>c3p0</groupId>
             <artifactId>c3p0</artifactId>
-            <version>0.9.1.2</version>
+            <version>${c3p0.version}</version>
         </dependency>
-
 
     </dependencies>
 

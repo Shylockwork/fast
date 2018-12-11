@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CustomBeanRegistry">
+    <option name="map">
+      <map>
+        <entry key="&lt;jaxrs:server xmlns:jaxrs=&quot;http://cxf.apache.org/jaxrs&quot; xmlns=&quot;http://www.springframework.org/schema/beans&quot; address=&quot;/userService&quot;&gt;&#10;  &lt;jaxrs:serviceBeans&gt;&#10;    &lt;bean class=&quot;webservice.rs.service.UserServiceImpl&quot; lazy-init=&quot;default&quot; autowire=&quot;default&quot; autowire-candidate=&quot;default&quot; /&gt;&#10;  &lt;/jaxrs:serviceBeans&gt;&#10;&lt;/jaxrs:server&gt;">
+          <value>
+            <list>
+              <CustomBeanInfo>
+                <option name="beanName" value="org.apache.cxf.jaxrs.spring.JAXRSServerFactoryBeanDefinitionParser$SpringJAXRSServerFactoryBean--248595275" />
+                <option name="beanClassName" value="org.apache.cxf.jaxrs.spring.JAXRSServerFactoryBeanDefinitionParser$SpringJAXRSServerFactoryBean" />
+              </CustomBeanInfo>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://cxf.apache.org/jaxws
+        http://cxf.apache.org/schemas/jaxws.xsd
+        http://cxf.apache.org/jaxrs
+        http://cxf.apache.org/schemas/jaxrs.xsd">
+
+
+
+    <context:annotation-config/>
+
+    <!--开启自动扫描controller包-->
+    <context:component-scan base-package="webssm">
+        <context:exclude-filter type="annotation"
+                                expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+
+    <!--Spring整合ApacheCXF,发布jaxws服务
+    1:服务地址
+    2:服务bean
+    完整服务地址:
+    http://localhost:8080/ws/hello
+-->
+    <jaxws:server address="/hello">
+        <jaxws:serviceBean>
+            <bean class="webservice.ws.impl.HelloServiceImpl"></bean>
+        </jaxws:serviceBean>
+    </jaxws:server>
+
+    <!--
+        Spring整合ApacheCXF，发布jaxrs服务：
+        1. 服务地址
+        2. 服务bean
+        完整服务地址：
+        http://localhost:8080/rs/userService
+    -->
+<jaxrs:server address="/userService">
+    <jaxrs:serviceBeans>
+        <bean class="webservice.rs.service.UserServiceImpl"></bean>
+    </jaxrs:serviceBeans>
+</jaxrs:server>
+
+</beans>
