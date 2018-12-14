@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <context:component-scan base-package="shylock.transaction">
+    </context:component-scan>
+
+    <!-- 实现DataSource配置 -->
+    <!-- 原数据源改为连接池数据源 -->
+    <context:property-placeholder location="classpath:config/mybatis/db.properties" />
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${jdbc.driver}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <property name="user" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+    <!-- 在项目中自定义的类使用配置或者注解均可；但是框架中
+    提供的类一般使用配置实现 -->
+    <bean id="template" class="org.springframework.jdbc.core.JdbcTemplate">
+        <constructor-arg index="0" ref="dataSource"></constructor-arg>
+    </bean>
+<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <property name="dataSource" ref="dataSource"/>
+</bean>
+
+    <!--增强方式配置-->
+    <!--<tx:advice id="txAdvice" transaction-manager="transactionManager">-->
+        <!--&lt;!&ndash; 配置事务隔离级别，事务传播性 &ndash;&gt;-->
+        <!--<tx:attributes>-->
+            <!--&lt;!&ndash;真正实现配置增强方式的位置&ndash;&gt;-->
+            <!--&lt;!&ndash;name属性用于设置在目标类中那些方法需要实现哪种增强-->
+                <!--name属性的值也可以使用通配符*-->
+            <!--&ndash;&gt;-->
+            <!--<tx:method name="account" isolation="DEFAULT" propagation="REQUIRED"/>-->
+        <!--</tx:attributes>-->
+    <!--</tx:advice>-->
+
+    <!--切入操作-->
+    <!--<aop:config>-->
+        <!--<aop:pointcut id="txCut" expression="execution(* shylock.transaction.service.AccountServiceImpl.account(..))" />-->
+        <!--<aop:advisor advice-ref="txAdvice" pointcut-ref="txCut"/>-->
+    <!--</aop:config>-->
+
+    <!-- 支持事务注解 -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+</beans>
