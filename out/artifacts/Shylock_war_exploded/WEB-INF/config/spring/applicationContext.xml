@@ -13,8 +13,6 @@
         http://cxf.apache.org/jaxrs
         http://cxf.apache.org/schemas/jaxrs.xsd">
 
-
-
     <context:annotation-config/>
 
     <!--开启自动扫描controller包-->
@@ -22,7 +20,6 @@
         <context:exclude-filter type="annotation"
                                 expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
-
 
     <!--Spring整合ApacheCXF,发布jaxws服务
     1:服务地址

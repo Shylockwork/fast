@@ -6,8 +6,5 @@ public class MyExecutor {
             UserService   userService = new UserServiceImpl();
             MyInvocationHandler invocationHandler = new MyInvocationHandler(userService);
             ((UserService) invocationHandler.bind()).add(5,5);
-
-
-
     }
 }

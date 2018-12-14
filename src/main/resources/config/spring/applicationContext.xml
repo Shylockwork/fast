@@ -31,6 +31,18 @@
     </bean>
 
 
+    <bean>
+
+    </bean>
+
+
+
+
+
+
+
+
+
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <!--加载mybatis的配置文件-->
         <property name="configLocation" value="config/mybatis/SqlMapConfig.xml"/>

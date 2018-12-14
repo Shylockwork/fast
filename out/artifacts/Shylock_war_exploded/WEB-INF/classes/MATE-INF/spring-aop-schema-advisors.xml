@@ -16,11 +16,11 @@
     </bean>
 
 <aop:config>
+    <!--切片类,代理实现类-->
     <aop:aspect id="concurrentOperationRetry" ref="concurrentOperationExecutor">
+        <!--扫描service包下的所有扫描到容器的的类的所有方法,添加环绕-->
         <aop:pointcut id="idempotentOperation" expression="execution(* shylock.aop.schema.advisors.service.*.*(..))" />
         <aop:around method="doConcurrentOperation" pointcut-ref="idempotentOperation"/>
     </aop:aspect>
 </aop:config>
-
-
 </beans>
