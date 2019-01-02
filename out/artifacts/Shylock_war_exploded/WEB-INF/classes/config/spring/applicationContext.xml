@@ -32,14 +32,7 @@
 
 
     <bean>
-
     </bean>
-
-
-
-
-
-
 
 
 
@@ -63,8 +56,6 @@
         <!--<property name="sqlSessionFactory" ref="sqlSessionFactory"/>-->
     <!--</bean>-->
 
-
-
     <!--建议使用MapperScannerConfiurer进行包扫描-->
     <!-- mapper批量扫描，从mapper包中扫描出mapper接口，自动创建代理对象并且在spring容器中注册
 	遵循规范：将mapper.java和mapper.xml映射文件名称保持一致，且在一个目录 中
@@ -77,8 +68,6 @@
         <property name="basePackage" value="mybatis.mapper"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
-
-
 
 
 </beans>

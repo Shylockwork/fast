@@ -101,10 +101,6 @@
         </dependency>
 
 <!-- ******************************************************************************** -->
-
-
-
-
         <!--整合需要commons-lang包支持-->
         <dependency>
             <groupId>commons-lang</groupId>
@@ -118,7 +114,7 @@
             <version>${servlet-api.version}</version>
         </dependency>
 
-        <!--springmvc 需要fileupload支持-->
+        <!--spring mvc 需要fileupload支持-->
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
@@ -277,6 +273,29 @@
             <version>${c3p0.version}</version>
         </dependency>
 
+
+        <!--****************************************************************-->
+        <!--使用jsr数据校验-->
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+                <artifactId>hibernate-validator</artifactId>
+            <version>6.0.13.Final</version>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.fasterxml</groupId>-->
+            <!--<artifactId>classmate</artifactId>-->
+            <!--<version>1.3.0</version>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging</artifactId>
+            <version>3.3.0.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>2.0.1.Final</version>
+        </dependency>
     </dependencies>
 
     <build>

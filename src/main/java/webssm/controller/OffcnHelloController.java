@@ -33,8 +33,6 @@ public class OffcnHelloController implements Controller {
         list.add(u2);
 
         ModelAndView mav = new ModelAndView();
-
-
         mav.addObject("users",list);
         mav.setViewName(viewName);
 

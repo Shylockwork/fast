@@ -12,5 +12,24 @@
   </head>
   <body>
   <a href="${pageContext.request.contextPath}/userlist.action">用户列表</a>
+  <br/>
+  <a href="${pageContext.request.contextPath}/handler.action">handler</a>
+  <br/>
+  <a href="${pageContext.request.contextPath}/person.action">person</a>
+
+  <hr/>
+
+  <!-- 向更深一层的包装类型中传递值 -->
+  <form action="${pageContext.request.contextPath }/hello/deptDelete" method="post">
+      <p>id:<input type="text" name="dept.deptId"></p>
+      <p>name:<input type="text" name="dept.deptName"></p>
+      <p>location:<input type="text" name="dept.deptLocation"></p>
+      <p>price:<input type="text" name="price"></p>
+      <p><input type="submit" value="提交"></p>
+  </form>
+  <br/>
+
+  <a href="${pageContext.request.contextPath }/persons">需要登录才能访问的连接</a>
+
   </body>
 </html>
